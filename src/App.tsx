@@ -2,32 +2,36 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import PostList from './components/PostList';
 import WritePost from './components/WritePost';
 import PostDetail from './components/PostDetail';
-import Home from './components/Home';
+import Home from './components/Home'
 import Regist from './components/UserRegist';
 import NavBar from './components/NavBar';
-import {DaisyIntro} from './components/DaisyIntro';
 import {FlowbiteIntro} from './components/FlowbiteIntro';
+import { Skills } from './components/Skills';
+import TableSample from './components/TableSample';
+import { Projects } from './components/Projects';
+import { Experience } from './components/Experiences';
+import { Contact } from './components/Contact';
 
 function App() {
     return (
       <BrowserRouter>
+      {/* ✅ 상단 NavBar 고정 */}
+      <div className="sticky top-0 z-50">
+        <NavBar />
+      </div>
+      
         <div className="min-h-screen bg-zinc-900 text-white flex flex-col">
-            <header className="py-6 border-b border-zinc-800 text-center">
-            <DaisyIntro />
-            <FlowbiteIntro />
-
-            </header>
-
-            {/* ✅ 상단 NavBar 고정 */}
-            <div className="w-full px-4 max-w-4xl mx-auto">
-                <NavBar />
-            </div>
-
+          
             {/* ✅ 중앙 컨텐츠 영역 */}
             <main className="flex-grow w-full px-4 max-w-4xl mx-auto">
             <Routes>
                 <Route path="/" element={<Navigate to="/home" />} />
                 <Route path="/home" element={<Home />} />
+                <Route path="/skills" element={<Skills />} />
+                <Route path="/projects" element={<Projects />} />
+                <Route path="/exp" element={<Experience />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/tableSample" element={<TableSample />} />
                 <Route path="/regist" element={<Regist />} />
                 <Route path="/category/:category" element={<PostList />} />
                 <Route path="/write" element={<WritePost />} />

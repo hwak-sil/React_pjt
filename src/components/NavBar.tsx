@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import api from "../api/axiosInstance";
 import Button from "./common/Button";
+import { ThemeToggle } from './ThemeToggle';
 
 const NavBar = () => {
   const [id, setId] = useState('');
@@ -21,6 +22,7 @@ const NavBar = () => {
     }
   };
 
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
@@ -39,9 +41,16 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="bg-zinc-800 text-white flex justify-between items-center p-4">
+    <nav className="bg-zinc-800 text-white flex justify-between items-center p-4 ">
+
       <div className="flex gap-4 items-center">
         <Link to="/" className="hover:text-orange-400">🏠 Home</Link>
+        <Link to="/skills" className="hover:text-orange-400"> 스킬</Link>
+        <Link to="/projects" className="hover:text-orange-400"> 프로젝트</Link>
+        <Link to="/exp" className="hover:text-orange-400"> 경력</Link>
+        <Link to="/contact" className="hover:text-orange-400"> 연락처</Link>
+        <ThemeToggle />
+        
         <Button onClick={goToWrite}>✏️ 글쓰기</Button>
         {!isLoggedIn && <Link to="/regist" className="hover:text-orange-400">🧾 회원가입</Link>}
       </div>
