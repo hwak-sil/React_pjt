@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import api from "../api/axiosInstance";
+import api from "../../api/axiosInstance";
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const regist = () => {

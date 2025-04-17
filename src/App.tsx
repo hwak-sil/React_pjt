@@ -1,17 +1,17 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import PostList from './components/PostList';
-import WritePost from './components/WritePost';
-import PostDetail from './components/PostDetail';
+import PostList from './components/pages/PostList';
+import WritePost from './components/pages/WritePost';
+import PostDetail from './components/pages/PostDetail';
 import Home from './components/Home'
-import Regist from './components/UserRegist';
+import Regist from './components/pages/UserRegist';
 import NavBar from './components/NavBar';
-import {FlowbiteIntro} from './components/FlowbiteIntro';
 import { Skills } from './components/Skills';
 import TableSample from './components/TableSample';
 import { Projects } from './components/Projects';
 import { Experience } from './components/Experiences';
 import { Contact } from './components/Contact';
-
+import Board from './components/pages/Board';
+import BoardLayout from './components/layouts/BoardLayout.tsx'
 function App() {
     return (
       <BrowserRouter>
@@ -32,11 +32,12 @@ function App() {
                 <Route path="/exp" element={<Experience />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/tableSample" element={<TableSample />} />
-                <Route path="/regist" element={<Regist />} />
-                <Route path="/category/:category" element={<PostList />} />
-                <Route path="/write" element={<WritePost />} />
-                <Route path="/posts/:id" element={<PostDetail />} />
-                <Route path="/mod/:id" element={<PostDetail />} />
+                <Route path="/regist" element={<BoardLayout><Regist /></BoardLayout>} />
+                <Route path="/category/:category" element={<BoardLayout><PostList /></BoardLayout>} />
+                <Route path="/board" element={<BoardLayout><Board /></BoardLayout>} />
+                <Route path="/write" element={<BoardLayout><WritePost /></BoardLayout>} />
+                <Route path="/posts/:id" element={<BoardLayout><PostDetail /></BoardLayout>} />
+                <Route path="/mod/:id" element={<BoardLayout><PostDetail /></BoardLayout>} />
             </Routes>
             </main>
   

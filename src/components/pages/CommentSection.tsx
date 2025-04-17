@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { useAuth } from '../context/AuthContext';
-import { Comment } from '../types/Comment';
-import api from "../api/axiosInstance";
+import { useAuth } from '../../context/AuthContext';
+import { Comment } from '../../types/Comment';
+import api from "../../api/axiosInstance";
 
 const CommentSection = ({ postId }: { postId: number }) => {
 

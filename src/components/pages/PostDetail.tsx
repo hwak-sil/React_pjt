@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import api from "../api/axiosInstance";
-import { Post } from '../types/Post';
+import api from "../../api/axiosInstance";
+import { Post } from '../../types/Post';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../../context/AuthContext';
 import dayjs from 'dayjs';
 import CommentSection from './CommentSection';
 

@@ -1,55 +1,35 @@
-import { useEffect, useState } from 'react';
-import { Post } from '../types/Post';
-import { useNavigate } from 'react-router-dom';
-import api from "../api/axiosInstance";
 
 
-const TableSample = () => {
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [error, setError] = useState(false);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    api.get<Post[]>('/posts')
-      .then((res) => {
-        setPosts(res.data);
-      })
-      .catch((err) => {
-        console.error('API 호출 실패:', err);
-        setError(true);
-      });
-  }, []);
-
-  const categories = [
-    { code: 'humor', label: '😂 유머 게시판' },
-    { code: 'info', label: '💡 정보 게시판' },
-  ];
-
+const TableSamplePage = () => {
   return (
-    <main className="max-w-4xl mx-auto p-4">
-      {categories.map(cat => {
-        const filtered = posts.filter(post => post.category === cat.code);
-        return (
-          <section key={cat.code} className="my-6">
-            <h2 className="text-2xl font-bold mb-2">{cat.label}</h2>
-            <a href={`/category/${cat.code}`} className="text-blue-400 hover:underline mb-4 block">게시판 바로가기</a>
-            {filtered.length === 0 ? (
-              <p className="text-zinc-300">등록된 게시글이 없습니다.</p>
-            ) : (
-              <ul className="space-y-1">
-                {filtered.map(post => (
-                  <li key={post.id}>
-                    <a href={`/posts/${post.id}`} className="text-blue-300 hover:text-blue-500">{post.title}</a>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </section>
-        );
-      })}
-      </main>
+    <div className="container mx-auto px-4 py-10">
+      {/* 페이지 제목 */}
+      <h1 className="text-4xl font-bold text-center mb-6">📝 게시판 샘플 소개</h1>
+
+      {/* 설명 */}
+      <p className="text-lg text-gray-400 text-center max-w-2xl mx-auto">
+        이 게시판 샘플은 <strong className="text-white">React + Spring Boot</strong> 기반으로 구현된 CRUD 게시판입니다.<br/>
+        로그인 여부에 따라 작성, 수정, 삭제 권한이 다르게 동작하며, <br/>카테고리별 분류도 가능합니다.
+      </p>
+
+      {/* 미리보기 이미지 */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-10">
+        <img src="/images/board-list.png" alt="게시글 목록" className="rounded-lg shadow" />
+        <img src="/images/board-write.png" alt="게시글 작성" className="rounded-lg shadow" />
+        <img src="/images/board-detail.png" alt="게시글 상세" className="rounded-lg shadow" />
+      </div>
+
+      {/* 이동 버튼 */}
+      <div className="flex justify-center my-8">
+        <a
+          href="/board"
+          className="btn btn-primary btn-lg"
+        >
+          🔗 게시판 샘플 사용해보기
+        </a>
+      </div>
+    </div>
   );
-  
 };
 
-export default TableSample;
+export default TableSamplePage;

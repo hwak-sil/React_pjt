@@ -89,7 +89,7 @@ const experiences = [
                 {/* ✅ 점 위치 약간 보정 */}
                 <div className="absolute -left-4 top-1 w-4 h-4 bg-primary rounded-full border-4 border-base-200" />
                 <p className="text-sm text-gray-500 dark:text-gray-400">{exp.period}</p>
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white">{exp.title}</h3>
+                <h3 className="text-lg font-bold text-gray-400 dark:text-white">{exp.title}</h3>
                 <p className="whitespace-pre-line text-sm text-gray-700 dark:text-gray-300">
                     {exp.description}
                 </p>
